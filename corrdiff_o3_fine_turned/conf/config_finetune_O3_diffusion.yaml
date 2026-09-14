@@ -1,0 +1,57 @@
+# O3 finetuning diffusion config — v2 方案 i
+# Based on config_training_custom_diffusion.yaml
+
+hydra:
+    job:
+          chdir: false
+          name: job_O3_ft_diffusion
+    run:
+          dir: ./output/${hydra:job.name}
+    searchpath:
+          - pkg://conf/base
+
+defaults:
+    - dataset: custom
+    - model: diffusion
+    - model_size: normal
+    - training: ${model}
+
+
+dataset:
+    type: /path/to/data/corrdiff_O3/datasets/o3_finetune.py::O3FinetuneDataset
+    data_path: /path/to/data/newgrid/O3/traindata_O3
+    pipeline:
+        normal_type: 'min_max'
+    phase: 'train'
+    datatype: h5
+
+validation:
+    phase: 'val'
+    data_len: -1
+
+training:
+    hp:
+        training_duration: 2000000
+        total_batch_size: 16
+        batch_size_per_gpu: "auto"
+        lr: 3.0e-5
+        lr_rampup: 2000
+    io:
+        checkpoint_dir: checkpoints_O3_ft_diffusion
+        # warm-start from PM2.5 diffusion (channel structure identical, clean loading)
+        warmstart_checkpoint: /path/to/data/corrdiff_PM25/checkpoints_diffusion/EDMPrecondSuperResolution.0.8000000.mdlus
+        # regression_checkpoint → O3 finetuned regression (NOT PM2.5 regression)
+        regression_checkpoint_path: /path/to/data/corrdiff_O3/checkpoints_O3_ft_regression/checkpoints_regression/UNet.0.2700000.mdlus
+        save_checkpoint_freq: 100000
+        validation_freq: 100000
+        validation_steps: 10
+        save_n_recent_checkpoints: 30
+
+model:
+    model_args:
+        sigma_data: 0.01
+
+wandb:
+    mode: disabled
+    results_dir: "./wandb"
+    watch_model: false
