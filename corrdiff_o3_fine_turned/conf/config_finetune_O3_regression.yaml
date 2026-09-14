@@ -1,0 +1,56 @@
+# O3 finetuning regression config — v2 方案 i (2018-only minmax, no clamp)
+# Based on config_training_custom.yaml
+
+hydra:
+    job:
+          chdir: false
+          name: job_O3_ft_regression
+    run:
+          dir: ./output/${hydra:job.name}
+    searchpath:
+          - pkg://conf/base  # Do not modify
+
+# Base parameters for dataset, model, training
+defaults:
+    - dataset: custom
+    - model: regression
+    - model_size: normal
+    - training: ${model}
+
+
+# O3 training dataset with native minmax
+dataset:
+    type: /path/to/data/corrdiff_O3/datasets/o3_finetune.py::O3FinetuneDataset
+    data_path: /path/to/data/newgrid/O3/traindata_O3
+    pipeline:
+        normal_type: 'min_max'
+    phase: 'train'
+    datatype: h5
+
+# Validation: same data source, phase='val' → last 744 steps of 2018
+validation:
+    phase: 'val'
+    data_len: -1
+
+# Training hyperparameters (finetuning, NOT from scratch)
+training:
+    hp:
+        training_duration: 3000000
+        total_batch_size: 16
+        batch_size_per_gpu: "auto"
+        lr: 3.0e-5
+        lr_rampup: 2000
+        # lr_decay kept from base (0.99, decays slowly — negligible over 3M)
+    io:
+        checkpoint_dir: checkpoints_O3_ft_regression
+        warmstart_checkpoint: /path/to/data/corrdiff_PM25/checkpoints_regression/UNet.0.8000000.mdlus
+        save_checkpoint_freq: 10000
+        save_n_recent_checkpoints: 60
+        validation_freq: 10000
+        validation_steps: 10
+
+# Wandb disabled
+wandb:
+    mode: disabled
+    results_dir: "./wandb"
+    watch_model: false
