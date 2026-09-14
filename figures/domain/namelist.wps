@@ -1,0 +1,41 @@
+&share
+ wrf_core = 'ARW',
+ max_dom = 3
+ start_date = '2019-05-30_00:00:00','2019-05-30_00:00:00','2019-05-30_00:00:00','2019-05-30_00:00:00','2019-05-30_00:00:00'
+ end_date   = '2019-12-31_00:00:00','2019-12-31_00:00:00','2019-12-31_00:00:00','2019-05-30_00:00:00','2019-05-30_00:00:00'
+ interval_seconds =21600
+ io_form_geogrid = 2,
+/
+&geogrid
+ parent_id         = 1,1,2,
+ parent_grid_ratio = 1,3,3,
+ i_parent_start    = 1,25,70,
+ j_parent_start    = 1,40,25,
+ e_we          = 120,193,169, 
+ e_sn          = 100,133,190, 
+ geog_data_res = 'default','default','default','modis_30s+30s','modis_30s+30s'
+ dx = 36000,
+ dy = 36000,
+ map_proj =  'lambert',
+ ref_lat   = 48,
+ ref_lon   = 12,
+ truelat1  = 40,
+ truelat2  = 53,
+ stand_lon = 12,
+ geog_data_path = '/public/home/data/sqzhu/WPS_GEOG/',
+ ref_x = 60.0,
+ ref_y = 50.0,
+/
+
+&ungrib
+ out_format = 'WPS',
+ prefix = 'GFS',
+! prefix = 'SST'
+/
+
+&metgrid
+! fg_name = 'GFS','SST',
+ fg_name = 'GFS'
+ io_form_metgrid = 2,
+/
+

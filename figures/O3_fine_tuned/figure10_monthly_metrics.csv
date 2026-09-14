@@ -1,0 +1,61 @@
+month,model,rmse,r2
+Jan,LR-interp,2.347774,0.571911
+Feb,LR-interp,3.210061,0.641622
+Mar,LR-interp,2.279598,0.478597
+Apr,LR-interp,2.258234,0.679311
+May,LR-interp,2.018671,0.669111
+Jun,LR-interp,3.421534,0.227999
+Jul,LR-interp,2.865567,0.44733
+Aug,LR-interp,2.847984,0.451784
+Sep,LR-interp,2.562592,0.564947
+Oct,LR-interp,2.840324,0.446154
+Nov,LR-interp,3.064625,0.647505
+Dec,LR-interp,3.313816,0.49415
+Jan,O3 Reg,1.938629,0.689749
+Feb,O3 Reg,2.321159,0.805428
+Mar,O3 Reg,1.928616,0.647105
+Apr,O3 Reg,2.051279,0.723047
+May,O3 Reg,1.918233,0.695303
+Jun,O3 Reg,2.995052,0.399363
+Jul,O3 Reg,2.438074,0.60618
+Aug,O3 Reg,2.812933,0.478999
+Sep,O3 Reg,2.139446,0.704073
+Oct,O3 Reg,2.20997,0.668855
+Nov,O3 Reg,2.434093,0.777627
+Dec,O3 Reg,2.256367,0.780031
+Jan,O3 CorrDiff,2.008031,0.663508
+Feb,O3 CorrDiff,2.409896,0.789616
+Mar,O3 CorrDiff,1.965286,0.643678
+Apr,O3 CorrDiff,2.148237,0.697425
+May,O3 CorrDiff,2.019079,0.664125
+Jun,O3 CorrDiff,3.100024,0.357906
+Jul,O3 CorrDiff,2.528997,0.5758
+Aug,O3 CorrDiff,2.941615,0.429496
+Sep,O3 CorrDiff,2.230821,0.677716
+Oct,O3 CorrDiff,2.304486,0.634759
+Nov,O3 CorrDiff,2.515091,0.7611
+Dec,O3 CorrDiff,2.294107,0.773518
+Jan,Fine-tuned Reg,1.921904,0.67041
+Feb,Fine-tuned Reg,2.116884,0.837429
+Mar,Fine-tuned Reg,1.792297,0.724613
+Apr,Fine-tuned Reg,2.060643,0.728193
+May,Fine-tuned Reg,1.932851,0.681347
+Jun,Fine-tuned Reg,2.747274,0.493938
+Jul,Fine-tuned Reg,2.165282,0.684156
+Aug,Fine-tuned Reg,2.625543,0.526366
+Sep,Fine-tuned Reg,1.980425,0.741958
+Oct,Fine-tuned Reg,2.050423,0.719402
+Nov,Fine-tuned Reg,2.218611,0.817058
+Dec,Fine-tuned Reg,2.153603,0.794898
+Jan,Fine-tuned CorrDiff,1.985357,0.649737
+Feb,Fine-tuned CorrDiff,2.175312,0.828219
+Mar,Fine-tuned CorrDiff,1.830817,0.707924
+Apr,Fine-tuned CorrDiff,2.107875,0.716665
+May,Fine-tuned CorrDiff,1.963748,0.672445
+Jun,Fine-tuned CorrDiff,2.783658,0.478991
+Jul,Fine-tuned CorrDiff,2.233372,0.664958
+Aug,Fine-tuned CorrDiff,2.676626,0.506627
+Sep,Fine-tuned CorrDiff,2.040603,0.726418
+Oct,Fine-tuned CorrDiff,2.100696,0.703756
+Nov,Fine-tuned CorrDiff,2.282324,0.80676
+Dec,Fine-tuned CorrDiff,2.213103,0.782533

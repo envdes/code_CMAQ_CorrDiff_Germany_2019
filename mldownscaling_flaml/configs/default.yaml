@@ -1,0 +1,36 @@
+paths:
+  corrdiff_repo: /path/to/data/corrdiff_clean
+  data_path: /path/to/data/newgrid/traindata
+  output_dir: ./outputs
+
+grid: {H: 144, W: 192}
+
+split:                  # 按时间切分，比例向上取整为整数时间步
+  val_frac: 0.10
+  test_frac: 0.10
+
+subsample:              # 控制表格规模；smoke 模式会覆盖这些值
+  n_train_timesteps: 1500
+  pixels_per_timestep: 3000
+  seed: 0
+
+features:
+  use_landuse: false    # 配置 A=false，配置 B=true
+  use_coords: true
+  use_time: false
+  time_index_csv: null
+
+target:
+  mode: log_residual    # log_residual | residual | direct
+  clip_negative: true
+
+flaml:
+  time_budget: 1800
+  estimator_list: [lgbm, xgboost, rf, extra_tree]
+  metric: rmse
+  eval_method: holdout  # 固定 holdout，禁用内部 CV
+  n_jobs: -1
+  seed: 0
+
+eval:
+  thresholds: [35, 75, 150]   # ug/m^3，高浓度尾部命中率阈值

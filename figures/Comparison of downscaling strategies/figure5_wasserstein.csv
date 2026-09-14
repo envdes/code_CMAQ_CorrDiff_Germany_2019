@@ -1,0 +1,7 @@
+model,wasserstein
+CorrDiff,0.241931
+Diffusion,0.243933
+Reg,0.246597
+LR-interp,0.920131
+FLAML,2.181657
+RF,2.939315
